@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <h2>javscript datatypes, let keyword and loops</h2>
+        <p id="result"></p>
+        <script>
+            var i;
+            var text = "";
+            {
+                let i = 0;
+                {
+                    while (i < 10) {
+                        text += "The number is: " + i + "<br>";
+                        i++;
+                    }
+                }
+            document.getElementById("result").innerHTML = text;
+            }
+            documnet.write("The value of i outside the block is: " + i);
+        </script>
+    </body>
+</html>
