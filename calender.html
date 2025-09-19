@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <title>Simple Calendar</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f4f4f4;
+    }
+
+    .calendar {
+      width: 350px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      padding: 20px;
+    }
+
+    .calendar h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .days {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 10px;
+    }
+
+    .day-name, .day {
+      text-align: center;
+      padding: 10px;
+    }
+
+    .day-name {
+      font-weight: bold;
+      background-color: #eee;
+    }
+
+    .day {
+      background-color: #fafafa;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+
+    .today {
+      background-color: #007bff;
+      color: #fff;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="calendar">
+    <h2 id="monthYear"></h2>
+    <div class="days" id="days">
+      <!-- Calendar will be injected here -->
+    </div>
+  </div>
+
+  <script>
+    const daysContainer = document.getElementById('days');
+    const monthYear = document.getElementById('monthYear');
+
+    const date = new Date();
+    const year = date.getFullYear();
+    const month = date.getMonth();
+
+    const months = [
+      "January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"
+    ];
+
+    const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+    // Show month and year
+    monthYear.textContent = `${months[month]} ${year}`;
+
+    // Add day names
+    dayNames.forEach(day => {
+      const dayNameEl = document.createElement('div');
+      dayNameEl.classList.add('day-name');
+      dayNameEl.textContent = day;
+      daysContainer.appendChild(dayNameEl);
+    });
+
+    const firstDay = new Date(year, month, 1).getDay();
+    const lastDate = new Date(year, month + 1, 0).getDate();
+
+    // Add blank days before the 1st
+    for (let i = 0; i < firstDay; i++) {
+      const emptyDiv = document.createElement('div');
+      daysContainer.appendChild(emptyDiv);
+    }
+
+    // Add actual days
+    for (let day = 1; day <= lastDate; day++) {
+      const dayEl = document.createElement('div');
+      dayEl.classList.add('day');
+      dayEl.textContent = day;
+
+      if (
+        day === date.getDate() &&
+        year === date.getFullYear() &&
+        month === date.getMonth()
+      ) {
+        dayEl.classList.add('today');
+      }
+
+      daysContainer.appendChild(dayEl);
+    }
+  </script>
+</body>
+</html>

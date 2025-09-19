@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Ryan's Portfolio</title>
+  <style>
+  
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      background: #f0f4f8;
+      color: #333;
+    }
+
+    header {
+      background-color: #2c3e50;
+      color: white;
+      padding: 1.8rem 2rem;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.8rem;
+      letter-spacing: 1px;
+      user-select: none;
+    }
+
+    nav {
+      margin-top: 1rem;
+    }
+    nav a {
+      color: white;
+      margin: 0 16px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.2rem;
+      padding: 6px 12px;
+      border-radius: 6px;
+      transition: background-color 0.3s ease;
+      cursor: pointer;
+      user-select: none;
+    }
+    nav a:hover, nav a.active {
+      background-color: #2980b9;
+      box-shadow: 0 0 8px #2980b9;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 3rem auto;
+      background: white;
+      padding: 2.5rem 3rem;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      min-height: 350px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    section {
+      display: none;
+      animation: fadeIn 0.6s ease forwards;
+    }
+    section.active {
+      display: block;
+    }
+
+    h2 {
+      color: #2c3e50;
+      margin-bottom: 1rem;
+      border-bottom: 3px solid #2980b9;
+      padding-bottom: 0.4rem;
+      user-select: none;
+    }
+
+    p, ul {
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    ul {
+      list-style-type: disc;
+      padding-left: 20px;
+    }
+
+    a.email-link {
+      color: #2980b9;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    a.email-link:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem 0;
+      background: #ecf0f1;
+      color: #555;
+      font-size: 0.9rem;
+      user-select: none;
+      margin-top: 3rem;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    /* Responsive */
+    @media(max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      nav a {
+        font-size: 1rem;
+        margin: 0 8px;
+        padding: 5px 8px;
+      }
+      main {
+        padding: 1.5rem 1.8rem;
+        margin: 2rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Ryan's Portfolio</h1>
+  <nav>
+    <a class="active" onclick="showSection('home', this)">Home</a>
+    <a onclick="showSection('about', this)">About Me</a>
+    <a onclick="showSection('projects', this)">Projects</a>
+    <a onclick="showSection('hobbies', this)">Hobbies</a>
+    <a onclick="showSection('contact', this)">Contact</a>
+  </nav>
+</header>
+
+<main>
+  <section id="home" class="active">
+    <h2>Welcome!</h2>
+    <p>Hi! I'm Ryan, a 12-year-old student learning to code. Explore my website to learn more about me, my projects, and what I love doing!</p>
+  </section>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>Hello! My name is Ryan. I’m 12 years old and I love coding at Codingal. I enjoy making projects using Scratch, MIT App Inventor, Machine Learning for Kids, HTML, CSS, and JavaScript. I'm always excited to learn and create new things!</p>
+  </section>
+
+  <section id="projects">
+    <h2>My Projects</h2>
+    <ul>
+      <li><strong>Scratch Animations:</strong> Created fun stories with animated characters.</li>
+
+      <li><strong>Mobile Quiz App:</strong> Built with MIT App Inventor to test friends' knowledge.</li>
+
+      <li><strong>Machine Learning Drawing Game:</strong> A cool game using Machine Learning for Kids.</li>
+
+      <li><strong>Personal Website:</strong> Built using HTML, CSS, and JavaScript to showcase my work.</li>
+
+    </ul>
+  </section>
+
+  <section id="hobbies">
+    <h2>Hobbies</h2>
+    <ul>
+      <li>🎨 Drawing and digital art</li>
+      <li>📚 Reading manga and comics</li>
+      <li>🏀 Playing basketball with friends</li>
+    </ul>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <p>If you'd like to get in touch, feel free to email me at: <a href="mailto:ryankimungui@gmail.com" class="email-link">ryankimungui@gmail.com</a></p>
+  </section>
+</main>
+
+<footer>
+  &copy; 2025 Ryan - Proud Codingal Student
+</footer>
+
+<script>
+  function showSection(id, element) {
+
+    const sections = document.querySelectorAll('main section');
+    sections.forEach(sec => sec.classList.remove('active'));
+
+    const navLinks = document.querySelectorAll('nav a');
+    navLinks.forEach(link => link.classList.remove('active'));
+
+
+    document.getElementById(id).classList.add('active');
+
+    element.classList.add('active');
+  }
+</script>
+
+</body>
+</html>
