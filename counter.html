@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Counter App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .counter-app {
+      background: #fff;
+      padding: 30px 40px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .counter-app h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .increment {
+      background: #28a745;
+      color: white;
+    }
+
+    .decrement {
+      background: #dc3545;
+      color: white;
+    }
+
+    .reset {
+      background: #ffc107;
+      color: black;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+  <div class="counter-app">
+    <h1 id="count">0</h1>
+    <div class="buttons">
+      <button class="decrement" onclick="decrement()">-</button>
+      <button class="reset" onclick="reset()">Reset</button>
+      <button class="increment" onclick="increment()">+</button>
+    </div>
+  </div>
+
+  <script>
+    let count = 0;
+
+    function updateDisplay() {
+      document.getElementById('count').textContent = count;
+    }
+
+    function increment() {
+      count++;
+      updateDisplay();
+    }
+
+    function decrement() {
+      count--;
+      updateDisplay();
+    }
+
+    function reset() {
+      count = 0;
+      updateDisplay();
+    }
+  </script>
+</body>
+</html>
