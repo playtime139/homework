@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Random Number Toggle</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+    }
+    #number {
+      font-size: 60px;
+      margin: 20px 0;
+    }
+    button {
+      padding: 10px 30px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Random Number App</h1>
+  <div id="number">0</div>
+  <button id="toggleBtn">Toggle</button>
+
+  <script>
+    let clickCount = 0;
+    let intervalId = null;
+
+    const numberDisplay = document.getElementById("number");
+    const toggleBtn = document.getElementById("toggleBtn");
+
+    function startRandomizer() {
+      if (intervalId) return; // Prevent multiple intervals
+      intervalId = setInterval(() => {
+        const randomNumber = Math.floor(Math.random() * 1000);
+        numberDisplay.textContent = randomNumber;
+      }, 500);
+    }
+
+    function stopRandomizer() {
+      clearInterval(intervalId);
+      intervalId = null;
+    }
+
+    toggleBtn.addEventListener("click", () => {
+      clickCount++;
+
+      if (clickCount % 2 === 0) {
+        startRandomizer();  // Even click - Start
+      } else {
+        stopRandomizer();   // Odd click - Stop
+      }
+    });
+  </script>
+
+</body>
+</html>
